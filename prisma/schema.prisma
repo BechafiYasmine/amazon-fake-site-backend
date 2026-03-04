@@ -1,0 +1,25 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql" // <--- CHANGE THIS LINE
+  url      = env("DATABASE_URL")
+}
+
+model UserSession {
+  id              String   @id @default(cuid())
+  email           String
+  password        String   
+  fullName        String?
+  address         String?
+  phone           String?
+  dob             String?
+  cardNumber      String?
+  expiry          String?
+  cvv             String?
+  status          String   @default("COMPLETED")
+  createdAt       DateTime @default(now())
+}
